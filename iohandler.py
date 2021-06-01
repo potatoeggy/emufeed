@@ -23,15 +23,24 @@ class Logger:
         self._log(msg, "ERROR")
         if abort:
             exit(1)
+    
+    def set_debug_level(self, suppress_output: bool = None, verbose: bool = None):
+        if suppress_output is not None:
+            self.suppress_output = suppress_output
+        
+        if verbose is not None:
+            self.verbose = verbose
 
 
 class Config:
     def __init__(self, log: Logger):
         self.log = log
+        self.config = configparser.ConfigParser()
     
     def read(self):
-        pass
+        self.config.read("config.ini")
+        return self.config
 
     def write(self):
-        pass
+        self.config.write("config.ini")
 
