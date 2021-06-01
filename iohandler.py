@@ -1,3 +1,5 @@
+import configparser
+
 class Logger:
     def __init__(self, suppress_output: bool = False, verbose: bool = False):
         self.suppress_output = suppress_output
@@ -22,5 +24,14 @@ class Logger:
         if abort:
             exit(1)
 
+
 class Config:
-    pass
+    def __init__(self, log: Logger):
+        self.log = log
+    
+    def read(self):
+        pass
+
+    def write(self):
+        pass
+

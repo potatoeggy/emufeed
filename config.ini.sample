@@ -1,0 +1,11 @@
+[emufeed]
+WebhookUrl=https://discord.com/api/webhook/pomme
+Verbose=True
+
+[sources]
+Ryujinx=True
+yuzu=True
+Citra=True
+Dolphin=True
+melonDS=True
+Citra=True
