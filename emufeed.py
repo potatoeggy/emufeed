@@ -2,10 +2,7 @@
 import iohandler
 
 log = iohandler.Logger()
-
-def get_config():
-    config = iohandler.Config(log)
-    return config
+config = iohandler.Config(log)
 
 def main():
     pass
