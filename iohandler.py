@@ -21,3 +21,6 @@ class Logger:
         self._log(msg, "ERROR")
         if abort:
             exit(1)
+
+class Config:
+    pass
