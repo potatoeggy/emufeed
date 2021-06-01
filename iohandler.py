@@ -39,8 +39,12 @@ class Config:
     
     def read(self):
         self.config.read("config.ini")
-        return self.config
+        
+        general = self.config["emufeed"]
+        self.webhook_url = general.get("WebhookUrl")
+        self.verbose = general.getboolean("Verbose", fallback=False)
+        self.sources = general.get("Sources").split(",")
+        # TODO: determine file format of source files - use plugins instead of json?
 
-    def write(self):
-        self.config.write("config.ini")
+
 
