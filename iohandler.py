@@ -1,4 +1,6 @@
 import configparser
+import json
+import requests
 
 class Logger:
     def __init__(self, suppress_output: bool = False, verbose: bool = False):
@@ -47,4 +49,28 @@ class Config:
         self.sources = general.get("Sources").split(",")
 
 
+class Data:
+    def __init__(self, log: Logger):
+        self.data = {}
+        self.log = log
 
+    def read(self):
+        with open("data.json", "r") as file:
+            self.data = json.loads(file.read())
+
+    def write(self):
+        with open("data.json", "w") as file:
+            file.write(json.dumps(self.data))
+
+class Discord:
+    def __init__(self, log: Logger, webhook_url):
+        self.log = log
+        self.webhook_url = webhook_url
+    
+    def send(self, source, title, description, link):
+        payload = {
+            "username": source.name,
+            "avatar_url": source.logo,
+            "content": f"[{title}]({link})"
+        }
+        requests.post(self.webhook_url, data=payload)
