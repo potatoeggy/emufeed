@@ -55,8 +55,12 @@ class Data:
         self.log = log
 
     def read(self):
-        with open("data.json", "r") as file:
-            self.data = json.loads(file.read())
+        try:
+            with open("data.json", "r") as file:
+                self.data = json.loads(file.read())
+        except FileNotFoundError:
+            # expected, will be created later
+            pass
 
     def write(self):
         with open("data.json", "w") as file:
