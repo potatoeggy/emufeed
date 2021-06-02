@@ -43,8 +43,8 @@ class Config:
         general = self.config["emufeed"]
         self.webhook_url = general.get("WebhookUrl")
         self.verbose = general.getboolean("Verbose", fallback=False)
+        self.suppress_output = general.getboolean("Quiet", fallback=False)
         self.sources = general.get("Sources").split(",")
-        # TODO: determine file format of source files - use plugins instead of json?
 
 
 
