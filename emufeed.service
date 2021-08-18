@@ -1,0 +1,7 @@
+[Unit]
+Description=Search for RSS updates and send them to Discord
+
+[Service]
+ExecStart=/usr/bin/python -u /PATH/TO/emufeed.py
+WorkingDirectory=/DIRECTORY/OF/EMUFEED.PY/
+Type=simple

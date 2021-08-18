@@ -5,6 +5,7 @@ A lightweight Python script to check for RSS feed updates and post them to a Dis
 
  - Python 3.6+
  - `feedparser` (`pip install feedparser`)
+ - `requests` (`pip install requests`)
 
 ## Usage
 
@@ -14,3 +15,10 @@ A lightweight Python script to check for RSS feed updates and post them to a Dis
   - `Verbose`: show debug information if set to `True`.
   - `Sources`: a comma-separated list of sources to enable in `sources.py` by their function name.
   - `Quiet`: suppress all output if set to `True`.
+3. Run the main script `emufeed.py`.
+
+## Automatically starting emufeed
+
+On Windows systems, Task Scheduler can be used to run emufeed at regular intervals.
+
+On Linux systems, a sample systemd service and timer are provided (warning: no security options set by default) and they can be copied directly to `/etc/systemd/system/`.
