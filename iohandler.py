@@ -48,6 +48,9 @@ class Config:
         self.verbose = general.getboolean("Verbose", fallback=False)
         self.suppress_output = general.getboolean("Quiet", fallback=False)
         self.sources = general.get("Sources").split(",")
+        self.ignore_if_empty_json = not general.getboolean(
+            "SendLatestOnFirstRun", fallback=False
+        )
 
 
 class Data:
