@@ -5,6 +5,7 @@ import sources
 log = iohandler.Logger()
 config = iohandler.Config(log)
 
+
 def main():
     log.info("Reading configuration")
     config.read()
@@ -23,7 +24,7 @@ def main():
             source_modules.append(getattr(sources, c)(log, config))
         else:
             log.warn(f"Source module not found: {c}")
-    
+
     # check for updates
     for source in source_modules:
         log.debug(f"Getting data for module {source.name}")
@@ -36,7 +37,7 @@ def main():
         else:
             discord.send(source, title, description, link)
             data.data[module_name] = link
-    
+
     data.write()
 
 
