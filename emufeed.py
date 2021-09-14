@@ -24,6 +24,7 @@ def main():
             source_modules.append(getattr(sources, c)(log, config))
         else:
             log.warn(f"Source module not found: {c}")
+    log.debug(f"Found modules {[type(s).__name__ for s in source_modules]}")
 
     # check for updates
     for source in source_modules:
@@ -34,11 +35,11 @@ def main():
         module_name = type(source).__name__
         if module_name in data.data and data.data[module_name] == link:
             log.debug(f"No updates found for module {module_name}")
-        elif config.ignore_if_empty_json:
+        elif module_name not in data.data and config.ignore_if_empty_json:
             log.debug(f"First run detected and SendLatestOnFirstRun disabled, ignoring")
         else:
             discord.send(source, title, description, link)
-            data.data[module_name] = link
+        data.data[module_name] = link
 
     data.write()
 
