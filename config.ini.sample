@@ -1,6 +1,6 @@
 [emufeed]
 WebhookUrl=https://discord.com/api/webhook/pomme
 Verbose=True
-Sources=ryujinx,yuzu,citra,dolphin,melonds,asahi_linux
+Sources=ryujinx,yuzu,citra,dolphin,melonds,asahi_linux,supergoodcode
 Quiet=False
 SendLatestOnFirstRun=False

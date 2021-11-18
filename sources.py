@@ -71,3 +71,10 @@ class asahi_linux(Source):
 
     def get_latest(self):
         return self.get_link_by_rss("https://asahilinux.org/blog/index.xml")
+
+class supergoodcode(Source):
+    name = "Mike Blumenkrantz"
+    url = "https://www.supergoodcode.com"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://www.supergoodcode.com/feed.xml")
