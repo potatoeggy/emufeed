@@ -1,9 +1,10 @@
 #!/usr/bin/python
+from typing import Final
 import iohandler
 import sources
 
-log = iohandler.Logger()
-config = iohandler.Config(log)
+log: Final = iohandler.Logger()
+config: Final = iohandler.Config(log)
 
 
 def main():
@@ -12,13 +13,13 @@ def main():
     log.set_debug_level(config.suppress_output, config.verbose)
 
     log.debug("Reading data")
-    data = iohandler.Data(log)
+    data: Final = iohandler.Data(log)
     data.read()
 
-    discord = iohandler.Discord(log, config.webhook_url)
+    discord: Final = iohandler.Discord(log, config.webhook_url)
 
     # import modules
-    source_modules = []
+    source_modules: Final[list] = []
     for c in config.sources:
         if hasattr(sources, c):
             source_modules.append(getattr(sources, c)(log, config))
@@ -32,11 +33,12 @@ def main():
         title, description, link = source.get_latest()
 
         # if this is first run for module and no change
-        module_name = type(source).__name__
+        module_name: Final[str] = type(source).__name__
         if module_name in data.data and data.data[module_name] == link:
             log.debug(f"No updates found for module {module_name}")
         elif module_name not in data.data and config.ignore_if_empty_json:
-            log.debug(f"First run detected and SendLatestOnFirstRun disabled, ignoring")
+            log.debug(
+                f"First run detected and SendLatestOnFirstRun disabled, ignoring")
         else:
             discord.send(source, title, description, link)
         data.data[module_name] = link

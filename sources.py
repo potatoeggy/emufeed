@@ -1,22 +1,8 @@
 import configparser
+
+from iohandler import Source
 import iohandler
 import feedparser
-
-
-class Source:
-    def __init__(self, log: iohandler.Logger, config: iohandler.Config):
-        self.log = log
-        self.config = config
-
-    def get_latest(self):
-        # override this function
-        self.log.error(
-            f"{self.__class__.__name__} does not implement an update method."
-        )
-
-    def get_link_by_rss(self, link):
-        entry = feedparser.parse(link)["entries"][0]
-        return (entry.title, entry.description, entry.link)
 
 
 class yuzu(Source):
@@ -72,16 +58,18 @@ class asahi_linux(Source):
     def get_latest(self):
         return self.get_link_by_rss("https://asahilinux.org/blog/index.xml")
 
+
 class supergoodcode(Source):
     name = "Mike Blumenkrantz"
     url = "https://www.supergoodcode.com"
-    
+
     def get_latest(self):
         return self.get_link_by_rss("https://www.supergoodcode.com/feed.xml")
+
 
 class asus_linux(Source):
     name = "ASUS Linux"
     url = "https://asus-linux.org/blog"
-    
+
     def get_latest(self):
         return self.get_link_by_rss("https://asus-linux.org/rss.xml")
