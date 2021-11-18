@@ -78,3 +78,10 @@ class supergoodcode(Source):
     
     def get_latest(self):
         return self.get_link_by_rss("https://www.supergoodcode.com/feed.xml")
+
+class asus_linux(Source):
+    name = "ASUS Linux"
+    url = "https://asus-linux.org/blog"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://asus-linux.org/rss.xml")
