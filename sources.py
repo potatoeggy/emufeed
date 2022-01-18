@@ -87,3 +87,10 @@ class themaister(Source):
     
     def get_latest(self):
         return self.get_link_by_rss("https://themaister.net/blog/feed/")
+
+class airlied(Source):
+    name = "Dave Airlie"
+    url = "https://airlied.blogspot.com"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://airlied.blogspot.com/feeds/posts/default?alt=rss")
