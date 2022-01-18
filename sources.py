@@ -80,3 +80,10 @@ class jlekstrand(Source):
     
     def get_latest(self):
         return self.get_link_by_rss("https://www.jlekstrand.net/jason/blog/feed/all.xml")
+
+class themaister(Source):
+    name = "Maister's Graphics Adventures"
+    url = "https://themaister.net/blog"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://themaister.net/blog/feed/")
