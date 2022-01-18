@@ -73,3 +73,10 @@ class asus_linux(Source):
 
     def get_latest(self):
         return self.get_link_by_rss("https://asus-linux.org/rss.xml")
+
+class jlekstrand(Source):
+    name = "Jason Ekstrand"
+    url = "https://jlekstrand.net/blog"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://www.jlekstrand.net/jason/blog/feed/all.xml")
