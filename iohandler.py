@@ -80,7 +80,7 @@ class Data:
 class Source:
     name: str = "Source Name"
     url: str = "Source Home URL"
-    logo: str = "Path to Image Avatar"
+    logo: str = None
 
     def __init__(self, log: Logger, config: Config):
         self.log: Final[Logger] = log
@@ -108,4 +108,6 @@ class Discord:
             "avatar_url": source.logo,
             "content": f"[{title}]({link})",
         }
+        if source.logo:
+            payload["avatar_url"] = source.logo
         requests.post(self.webhook_url, data=payload)
