@@ -74,6 +74,7 @@ class asus_linux(Source):
     def get_latest(self):
         return self.get_link_by_rss("https://asus-linux.org/rss.xml")
 
+
 class jlekstrand(Source):
     name = "Jason Ekstrand"
     url = "https://jlekstrand.net/blog"
@@ -94,3 +95,18 @@ class airlied(Source):
     
     def get_latest(self):
         return self.get_link_by_rss("https://airlied.blogspot.com/feeds/posts/default?alt=rss")
+
+class ciechanow(Source):
+    name = "Bartosz Ciechanowski"
+    url = "https://ciechanow.ski"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://ciechanow.ski/atom.xml")
+
+
+class rosenzweig(Source):
+    name = "Alyssa Rosenzweig"
+    url = "https://rosenzweig.io"
+    
+    def get_latest(self):
+        return self.get_link_by_rss("https://rosenzweig.io/feed.xml")
